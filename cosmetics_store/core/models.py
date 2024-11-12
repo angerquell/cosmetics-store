@@ -23,7 +23,5 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     date_add = models.DateTimeField(auto_now_add=True) 
-    quantity = models.PositiveIntegerField()
-
-    def __str__(self):
-        return self.user
+    quantity = models.PositiveIntegerField(default=1)
+    

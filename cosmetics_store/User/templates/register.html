@@ -6,11 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-
-    <div>
-        <p>{{item.name}}</p>
-        <p>{{item.cost}}</p>
-        <img src={{item.image.url}} height="200", width="200"/>
-    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Register</button>
+    </form>
 </body>
 </html>
