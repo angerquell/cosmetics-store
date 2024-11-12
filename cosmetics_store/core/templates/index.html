@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <form action="{% url 'search' %}" method="get">
+            <input name="q" type="text" placeholder="Search...">
+          </form>
+    </header>
+    {% for item in items %}
+    <a href="{% url 'detail' item.pk %}">
+    <div>
+        <p>{{item.name}}</p>
+        <p>{{item.cost}}</p>
+    </div>
+    </a>
+    {% endfor %}
+</body>
+</html>
