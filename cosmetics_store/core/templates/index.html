@@ -9,13 +9,15 @@
     <header>
         <form action="{% url 'search' %}" method="get">
             <input name="q" type="text" placeholder="Search...">
+            <a href="{% url 'cart' %}">Корзина</a>
           </form>
-        <p>{{ request.user }}</p>
+       
         {% if request.user.is_authenticated %}
+        <a href="{% url 'profile' %}"> {{request.user}} </a>
         <a href="{% url 'logout' %}">Выйти</a>
         {% endif %}
     </header>
-    {% for item in items %}
+    {% for item in page_obj %}
     <a href="{% url 'detail' item.pk %}">
     <div>
         <p>{{item.name}}</p>
@@ -25,5 +27,18 @@
     </div>
     </a>
     {% endfor %}
+    <div>
+        <span>
+          {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          {% endif %}
+          <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+          {% endif %}
+        </span>
+      </div>
 </body>
 </html>

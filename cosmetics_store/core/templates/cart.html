@@ -6,13 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+    <p>Количетсво предметов: {{total_items}} </p>
+    <p>Общая сумма: {{total_cost}}</p>
     {% for item in items %}
     <a href="{% url 'detail' item.item.pk %}">
         
     <div>
-        <p>{{item.item.name}}</p>
-        <p>{{item.item.cost}}</p>
-        <p> {{item.quantity}} </p>
+        <p>Название: {{item.item.name}}</p>
+        <p>Цена: {{item.item.cost}}</p>
+        <p>Количетсво: {{item.quantity}} </p>
         <img src={{item.item.image.url}} height="200", width="200"/>
     </div>
     <a href="{% url 'remove_cart' item.item.pk %}"> Удалить </a>
