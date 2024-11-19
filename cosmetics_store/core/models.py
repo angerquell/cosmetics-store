@@ -6,7 +6,12 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+class Country(models.Model):
+    name = models.CharField(max_length=100, null = True, blank = True)
+    def __str__(self):
+        return self.name
+
 
 class Item(models.Model):
     name = models.CharField(max_length=100)
@@ -14,14 +19,16 @@ class Item(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='image')
     cost = models.PositiveIntegerField()
- 
+    country = models.ManyToManyField(Country)
+
     def __str__(self):
         return self.name
+
+
 
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     date_add = models.DateTimeField(auto_now_add=True) 
-    quantity = models.PositiveIntegerField(default=1)
-    
+    quantity = models.PositiveIntegerField(default=1)    

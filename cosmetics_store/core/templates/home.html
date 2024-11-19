@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Labirinth</title>
+    <link rel="icon" href="assets/logo.png" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <nav class="header__nav">
+          <a href="{% url 'home' %}" class="nav__link">Главная</a>
+          <ul class="catalog">
+            <li class=nav__item><a href="#" class="nav__link">Каталог</a>
+            <ul class = 'sidebar'>
+              {% for i in catalog %}
+              <li><a href="{% url 'filtered_products' i %}" class="link_catalog" name="catalog">{{i}}</a></li>
+              {% endfor %}
+              </ul>
+              </ul>
+              <form action="{% url 'search' %}" method="get">
+                <input name="q" type="text" placeholder="Search...">
+                <a href="{% url 'cart' %}">Корзина</a>
+              </form>
+        </nav>
+        <img src="" alt="Logo" class="header__logo" />
+      </header>
+      <div class="companies">
+        {% for i in catalog %}
+        <a href="{% url 'filtered_products' i %}" class="company" name="catalog">{{i}}</a>
+        {% endfor %}
+      </div>
+      <main class="main">
+        <div class="slider">
+          <div class="slides">
+              <img src="{% static 'images/first_baner.png' %}" class="slide">
+              <img src="{% static 'images/second_baner.png' %}" class="slide">
+           
+          </div>
+          <button class="prev" onclick="prevSlide()">&#10094;</button>
+          <button class="next" onclick="nextSlide()">&#10095;</button>
+      </div>
+  
+      <script src="{% static 'js/script.js' %}"></script>
+       
+      </main>
+      <footer class="footer">
+        <img src="./assets/logo.png" alt="" class="footer__logo" />
+        <p class="footer__text">Поддержка <br />+79109999999</p>
+        <p class="footer__text">
+          Следите за нами в Telegram <br />
+          @TEST
+        </p>
+        <p class="footer__text">by Vikusik</p>
+      </footer>
+    </div>
+    <script>
+      function open(){
+        document.getElementById('sidebar').style.display = 'block'
+      }
+    </script>
+  </body>
+</html>

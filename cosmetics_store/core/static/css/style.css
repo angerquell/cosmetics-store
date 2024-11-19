@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    min-width: 0;
+}
+
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    min-height: 100dvh;
+    font-family: "Philosopher", sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10dvh;
+    padding: 50px;
+    
+}
+
+.header__nav {
+    display: flex;
+    gap: 16px;
+    
+}
+
+.nav__link {
+    color: black;
+    text-decoration: none;
+    transition: .4s;
+    font-size: 24px;
+    font-weight: 400;
+    
+}
+.link_сatalog{
+    text-decoration: none;
+    color: black;
+}
+.link_сatalog:hover{
+    color: white;
+}
+
+.catalog{
+    margin: auto;
+    list-style-type:  none;
+    padding-right: 20px ;
+}
+
+.sidebar {
+    position: absolute;
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fed2df; 
+}
+
+.nav__item:hover .sidebar {
+    display: block;
+}
+
+.nav__link:hover{
+    color: #fed2df;
+}
+
+.header__logo {
+    height: 100%;
+}
+
+.header__title{
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.companies {
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fed2df;
+    gap: 20px;
+}
+
+.company {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.main {
+    display: flex;
+
+}
+
+.main__left {
+    display: flex;
+    flex-direction: column;
+    background-color: #fed2df;
+    margin-top:50px;
+    border-radius: 12px;
+    height: 250px;
+}
+
+.left__title {
+    font-size: 24px;
+    font-weight: 400;
+    padding:20px;
+}
+
+.left__items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.main__center {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 50px;
+    
+}
+
+.center__title {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.card {
+    display: flex;
+    gap: 8px;
+    padding-top: 20px;
+}
+
+.card__photo {
+    height: 300px;
+}
+
+.card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+}
+
+.card__text {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.main__right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px;
+}
+
+.right__card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card__title {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.footer {
+    
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #fed2df;
+    align-items: center;
+    height: 100px;
+}
+
+.footer__text {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.footer__logo {
+    height: 100%;
+}
+
+.support-info p{
+    margin-top:  15px;
+}
+
+
+
+
+.slider {
+    
+    left: 30%;
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+
+.slide {
+    min-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
