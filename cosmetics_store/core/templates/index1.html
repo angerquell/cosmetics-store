@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Labirinth</title>
-    <link rel="icon" href="assets/logo.png" />
+    <link rel="icon" href="{% static 'images/logo.png' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
@@ -24,10 +24,17 @@
               </ul>
               <form action="{% url 'search' %}" method="get">
                 <input name="q" type="text" placeholder="Search...">
-                <a href="{% url 'cart' %}">Корзина</a>
               </form>
+              <a href="{% url 'cart' %}" class="nav__link">Корзина</a>
+              {% if user.is_authenticated %}
+              <a href="{% url 'profile' %}" class="nav__link">{{request.user}}</a>
+              <a href="{% url 'logout' %}" class="nav__link">Выйти</a>
+              {% else %}
+              <a href="{% url 'login' %}" class="nav__link">Войти</a>
+              <a href="{% url 'register' %}" class="nav__link">Регистрация</a>
+              {% endif %}
         </nav>
-        <img src="" alt="Logo" class="header__logo" />
+        <img src="{% static 'images/logo.png' %}"alt="Logo" class="header__logo" />
       </header>
       <div class="companies">
         {% for i in catalog %}
@@ -66,7 +73,7 @@
         </div>
       </main>
       <footer class="footer">
-        <img src="./assets/logo.png" alt="" class="footer__logo" />
+        <img src="{% static 'images/logo.png' %}" alt="" class="footer__logo" />
         <p class="footer__text">Поддержка <br />+79109999999</p>
         <p class="footer__text">
           Следите за нами в Telegram <br />

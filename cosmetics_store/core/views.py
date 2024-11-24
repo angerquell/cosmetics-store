@@ -3,24 +3,21 @@ from .models import Item, Cart, Category
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from django.core.paginator import Paginator
-def index(request):
-    item = Item.objects.all()
-    catalog = Category.objects.all()
+from django.views.generic.list import ListView
 
-    page_num = request.GET.get('page', 1)
-    paginator = Paginator(item, 4)
-    page_obj = paginator.page(page_num)
 
-    return render(request, 'index1.html', {'page_obj':page_obj, "catalog":catalog})
 
 def filter_item(request,category ):
     item = Item.objects.filter(category__name = category)
     catalog = Category.objects.all()
     return render(request, 'index1.html', {'page_obj':item, "catalog":catalog})
 
-def home(request):
-    catalog = Category.objects.all()
-    return render(request, 'home.html', {'catalog':catalog})
+class Home(ListView):
+    model = Category
+    template_name = 'home.html'
+    context_object_name = 'catalog'
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)
 
 def search(request):
     if request.method == 'GET':
