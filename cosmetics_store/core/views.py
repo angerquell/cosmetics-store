@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from django.core.paginator import Paginator
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 
 
@@ -27,11 +28,12 @@ def search(request):
         return render(request, 'index1.html', {'page_obj':item })
 
 
-def detail(request, pk):
-    item = get_object_or_404(Item, pk = pk)
-    return render(request, 'detail_item.html', {'item':item})
+class ItemDetailView(DetailView):
+    model = Item
+    template_name = 'detail_item.html'  
+    context_object_name = 'item'       
 
-
+    
 @login_required
 def add_cart(request, pk):
     item = get_object_or_404(Item, pk = pk)

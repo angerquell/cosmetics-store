@@ -1,8 +1,9 @@
 let currentSlide = 0;
 
 function showSlide(index) {
-    const slides = document.querySelector('.slides');
-    const totalSlides = document.querySelectorAll('.slide').length;
+    const slides = document.querySelectorAll('.slide'); 
+    const totalSlides = slides.length;
+
 
     if (index >= totalSlides) {
         currentSlide = 0;
@@ -12,8 +13,11 @@ function showSlide(index) {
         currentSlide = index;
     }
 
-    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    const slidesContainer = document.querySelector('.slides');
+    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
+
 
 function nextSlide() {
     showSlide(currentSlide + 1);
